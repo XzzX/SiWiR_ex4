@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="0.1">
+ <PUnstructuredGrid>
+    
+  <PPoints>
+   <PDataArray type="Float64" NumberOfComponents="3" format="ascii"/>
+  </PPoints>
+  
+  <PPointData>
+   <PDataArray type="Float64" Name="Temperature" NumberOfComponents="1" format="ascii"/>
+  </PPointData>
+  
+  <Piece Source="time_step_10_0.vtu"/>
+  <Piece Source="time_step_10_1.vtu"/>
+  <Piece Source="time_step_10_2.vtu"/>
+  <Piece Source="time_step_10_3.vtu"/>
+  <!-- more Pieces follow here ... -->
+  
+ </PUnstructuredGrid>
+</VTKFile>
