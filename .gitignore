@@ -379,6 +379,13 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
+### CMake ###
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
 *.pdf
 cg
 
