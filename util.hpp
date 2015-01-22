@@ -51,6 +51,11 @@ public:
 	int	c                      = 0;
 	double eps                 = 0.0;
 	double eps2                = 0.0;
+	int timesteps				= 0;
+	double tau					= 0.0;
+	double kappa				= 0.0;
+	double alpha				= 0.0;
+	int vtk_spacing				= 0;
 
 	double	hx                 = 0.0;
 	double	hy                 = 0.0;
@@ -89,7 +94,7 @@ public:
 	int offsetY                = 0;
 		
 	Params(int argc, char **argv){
-		if (argc < 5) {
+		if (argc < 10) {
 			std::cout << "Invalid number of arguments!" << std::endl;
 			std::cout << "./rgbs nx ny c eps" << std::endl;
 			exit(EXIT_FAILURE);
@@ -99,6 +104,11 @@ public:
 		c           = StringTo<int>(argv[3]);
 		eps         = StringTo<double>(argv[4]);
 		eps2 		= copysign(eps * eps, eps);
+		timesteps	= StringTo<int>(argv[5]);;
+		tau			= StringTo<double>(argv[6]);
+		kappa		= StringTo<double>(argv[7]);
+		alpha		= StringTo<double>(argv[8]);
+		vtk_spacing = StringTo<int>(argv[9]);
 
 		// output configuration parameters
 		/*
