@@ -26,8 +26,8 @@ constexpr	double f(const double x, const double y) {
 	return 4.0*M_PI*M_PI*sin(2.0*M_PI*x)*sinh(2.0*M_PI*y);
 }
 
-constexpr	double border(const double x, const double y) {
-	return sin(2.0*M_PI*x)*sinh(2.0*M_PI*y);
+constexpr	double initial(const double x, const double y) {
+	return sin(M_PI*x)*sin(M_PI*y);
 }
 
 class	Params{
@@ -122,13 +122,13 @@ public:
 		*/
 		
 		// calculate global parameters
-		hx     = 2.0 / nx;
+		hx     = 1.0 / nx;
 		hy     = 1.0 / ny;
 
 		invHx2 = 1.0 / hx / hx;
 		invHy2 = 1.0 / hy / hy;
 
-		preF   = ( 2 * invHx2 + 2 * invHy2 + k*k );
+		preF   = ( 2 * invHx2 + 2 * invHy2 );
 		
 		//make real number of points
 		++nx;
