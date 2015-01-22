@@ -16,16 +16,16 @@ LIBS        += -llikwid
  
 COMMON       = Timer.h
  
-all: cg
+all: heat
 
 %.o: %.cpp $(COMMON)
 	$(CXX) -c $(FLAGS) $(INCPATH) $<
  
-cg: cg.cpp
-	$(CXX) $(FLAGS) $(INCPATH) -o cg cg.cpp $(LIBPATH) $(LIBS)
+heat: heat.cpp
+	$(CXX) $(FLAGS) $(INCPATH) -o heat heat.cpp $(LIBPATH) $(LIBS)
 
-run: cg
-	./cg ${ARGS}
+run: heat
+	./heat ${ARGS}
 	gnuplot gnuplotSolution.plt
 
 documentation: report/setup.tex report/main.tex
@@ -34,6 +34,6 @@ documentation: report/setup.tex report/main.tex
 	cd report && pdflatex main.tex
 
 clean:
-	rm -f *.o cg
+	rm -f *.o heat
 
 .PHONY : all clean
