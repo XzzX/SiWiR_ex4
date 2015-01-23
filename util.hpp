@@ -26,8 +26,11 @@ constexpr	double f(const double x, const double y) {
 	return 4.0*M_PI*M_PI*sin(2.0*M_PI*x)*sinh(2.0*M_PI*y);
 }
 
-constexpr	double initial(const double x, const double y) {
-	return sin(M_PI*x)*sin(M_PI*y);
+double initial(const double x, const double y) {
+	//return sin(M_PI*x)*sin(M_PI*y);
+	double tempX = x - 0.5;
+	double tempY = y - 0.5;
+	return sin(2*M_PI* sqrt(tempX*tempX + tempY*tempY));
 }
 
 class	Params{

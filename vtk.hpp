@@ -49,7 +49,7 @@ VTK::~VTK(){
 
 void VTK::addTimeStep(const int timestep, const Grid& u){
 	if (mParams.rank == 0){
-		std::cout << timestep << std::endl;
+		//std::cout << timestep << std::endl;
 		
 		mPVDStream << fmt::format(PVD_ENTRY, timestep) << endl;
 		
