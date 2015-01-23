@@ -210,13 +210,13 @@ public:
 	}
 	
 	inline
-	double	getXCoord(const int indexX, const int indexY){
+	double	getXCoord(const int indexX, const int indexY) const{
 		(void)(indexY);
 		return	hx * (indexX + offsetX);
 	}
 	
 	inline
-	double	getYCoord(const int indexX, const int indexY){
+	double	getYCoord(const int indexX, const int indexY) const{
 		(void)(indexX);
 		return	hy * (indexY + offsetY);
 	}

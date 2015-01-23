@@ -11,6 +11,7 @@
 
 #include	"grid.hpp"
 #include	"util.hpp"
+#include	"vtk.hpp"
 
 const	int	BORDER = 1;
 
@@ -51,6 +52,8 @@ int main(int argc, char **argv) {
 	
 	params.createBlock();
 	
+	VTK	vtk(params);
+	
 	Grid	u(params.bx, params.by, BORDER);
 	
 	Grid	lookupF(params.bx, params.by, BORDER);
@@ -90,6 +93,8 @@ int main(int argc, char **argv) {
 	double	delta0      = 0.0;
 	double	delta1      = 0.0;
 	double	alpha       = 0.0;
+	
+	vtk.addTimeStep(0, u);
 	
 	for (int timestep = 0; timestep < params.timesteps; ++timestep){
 	
@@ -192,7 +197,7 @@ int main(int argc, char **argv) {
 		MPI_Barrier( MPI_COMM_WORLD );
 		time = timer.elapsed();
 		if (params.rank == 0){
-			std::cout << "time," << time << "; steps," << c << "; residuum," << sqrt(delta0 / ( params.nx - 2 ) / ( params.ny - 2 )) << std::endl;
+			std::cout << "timestep," << timestep << "; time," << time << "; steps," << c << "; residuum," << sqrt(delta0 / ( params.nx - 2 ) / ( params.ny - 2 )) << std::endl;
 		}
 		
 		MPI_Isend( &u(0, 0), 1, verticalBorderType, params.nbrs[Params::LEFT], 0, cartcomm, &reqs[0]   );
@@ -206,6 +211,10 @@ int main(int argc, char **argv) {
 		MPI_Irecv( &u(0, params.by), params.bx, MPI_DOUBLE, params.nbrs[Params::UP], 0, cartcomm, &reqs[7] );
 		
 		MPI_Waitall( 8, reqs, stats );
+		
+		if ( ((timestep+1) % params.vtk_spacing) == 0){
+			vtk.addTimeStep( (timestep+1) / params.vtk_spacing, u);
+		}
 	}
 	
 	
