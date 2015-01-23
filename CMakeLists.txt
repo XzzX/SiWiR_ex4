@@ -12,7 +12,7 @@ SET( SRCS
 OPTION( ARCHITECTURE_OPTIMIZATION   "enables/disables platform specific optimizations (on by default)" ON )
 OPTION( ENABLE_WERROR   "enables/disables treat warnings as errors (on by default)" ON )
 
-IF( CMAKE_COMPILER_IS_GNUCC )
+IF( CMAKE_COMPILER_IS_GNUCXX )
 	ADD_DEFINITIONS( -Wall -Wextra -Wshadow -std=c++0x )
 	IF( CMAKE_COMPILER_IS_GNUCC )
 		ADD_DEFINITIONS( -march=native )
