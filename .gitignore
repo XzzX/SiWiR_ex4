@@ -387,5 +387,6 @@ cmake_install.cmake
 install_manifest.txt
 
 *.pdf
-cg
+heat
+data/
 
