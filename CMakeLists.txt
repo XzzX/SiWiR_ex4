@@ -6,6 +6,7 @@ PROJECT( SiWiR_ex4 CXX )
 SET( SRCS
 
    heat.cpp
+   format.cc
    # more *.cpp files follow here
 )
 
