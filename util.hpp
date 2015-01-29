@@ -30,7 +30,12 @@ double initial(const double x, const double y) {
 	//return sin(M_PI*x)*sin(M_PI*y);
 	double tempX = x - 0.5;
 	double tempY = y - 0.5;
-	return sin(2*M_PI* sqrt(tempX*tempX + tempY*tempY));
+	double r = sqrt(tempX*tempX + tempY*tempY);
+	double temp = sin(4.0*M_PI*(r-0.125))+1;
+	if (r>0.5) temp = 0;
+	return temp * 0.5;
+	
+	//if ((r>0.3) && (r<0.5)) return 1; else return 0;
 }
 
 class	Params{
