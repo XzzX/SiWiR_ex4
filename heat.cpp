@@ -213,7 +213,8 @@ int main(int argc, char **argv) {
 		MPI_Waitall( 8, reqs, stats );
 		
 		if ( ((timestep+1) % params.vtk_spacing) == 0){
-			vtk.addTimeStep( (timestep+1) / params.vtk_spacing, u);
+			std::cout << "output" << std::endl;
+			vtk.addTimeStep( (timestep+1), u);
 		}
 	}
 	
